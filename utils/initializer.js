@@ -8,8 +8,13 @@ exports.init = async function () {
 
     let user = new User();
     user.username = "test@koibanx.com";
-    user.password = "admin";
+    user.password = "test123";
     await User.create(user);
 
-    logger.info("Test User created")
+    let userAdmin = new User();
+    userAdmin.username = "test@koibanx.com";
+    userAdmin.password = "admin";
+    await User.create(userAdmin);
+
+    logger.info("Test User and Admin User created")
 }

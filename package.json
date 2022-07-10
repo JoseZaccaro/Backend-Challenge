@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "run": "node $NODE_DEBUG_OPTION app.js"
+    "run": "node $NODE_DEBUG_OPTION app.js",
+    "start": "node $NODE_DEBUG_OPTION app.js",
+    "dev": "nodemon $NODE_DEBUG_OPTION app.js"
   },
   "author": "",
   "license": "ISC",
