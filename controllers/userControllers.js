@@ -4,7 +4,6 @@ const logger = require('../utils/logger');
 const userController = {
 
     validateUser: async (req, res, next) => {
-        logger.info("pending validations")
 
         if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
             logger.error("No authorization header")
@@ -24,9 +23,7 @@ const userController = {
         }
         req.user = {username, password};
         
-        logger.info("User validation successful")
         next();
-
     }
 
 }
