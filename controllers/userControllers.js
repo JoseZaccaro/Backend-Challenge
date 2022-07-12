@@ -16,11 +16,13 @@ const userController = {
         const [username, password] = credentials.split(':');
 
         const registeredUser = await User.findOne({ username: username});
+
+        if(!registeredUser) return res.status(401).json({ message: 'Invalid Authentication Credentials' });
+
         const userVerified = registeredUser.verifyPassword(password);
-        if (!userVerified) {
-            logger.error("Invalid password");
-            return res.status(401).json({ message: 'Invalid Authentication Credentials' });
-        }
+
+        if (!userVerified) return res.status(401).json({ message: 'Invalid Authentication Credentials' });
+        
         req.user = {username, password};
         
         next();

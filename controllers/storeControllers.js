@@ -35,13 +35,12 @@ const storeController = {
     postOneStore: async (req, res) => {
         const { name, cuit, concepts, currentBalance, active, lastSale } = req.body;
 
+        const newStore = new Store({ name, cuit, concepts, currentBalance, active, lastSale })
+        await Store.create(newStore)
 
-        // const newStore = new Store({ name, cuit, concepts, currentBalance, active, lastSale})
-        // await Store.create(newStore)
+        const responseStore = formatStores([newStore._doc])[0]
+        res.json(responseStore)
 
-
-        // res.json(newStore)
-        res.json("Response")
     },
     poblateStores: async (req, res) => {
 
